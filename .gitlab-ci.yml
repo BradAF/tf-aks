@@ -26,6 +26,7 @@ before_script:
   
 stages:
   - validate
+  - docs
   - plan
   - apply
   - inspec_test
@@ -115,6 +116,20 @@ apply-terraform-azure-kubernetes-service:
     - terraform init
     - terraform apply -input=false $PLAN
     - terraform destroy -var-file=$TF_VAR_FILE -var 'service_principal=$client_id' -var 'service_principal_secret=$client_secret' -input=false -force
+  when: manual
+  only:
+    - master
+
+terraform-docs:
+  image: registry.gitlab.com/datadarius/docker-terraform-docs:latest
+  stage: docs
+  dependencies:
+    - validate-terraform-azure-kubernetes-service
+  script:
+    - cd $BUILD_PATH_AZURE_KUBERNETES_SERVICE
+    - terraform-docs markdown > terraform-info.md
+    - git add terraform-info.md && git commit terraform-info.md -m "adding terraform-docs for $CI_COMMIT_REF_SLUG"
+
   when: manual
   only:
     - master
