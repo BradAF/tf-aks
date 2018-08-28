@@ -41,7 +41,7 @@ validate-bootstrap-azure-remote-state:
   artifacts:
     name: terraformdata
     paths:
-      - ./.terraform
+      - .terraform
 
 plan-bootstrap-azure-remote-state:
   stage: plan
@@ -55,7 +55,7 @@ plan-bootstrap-azure-remote-state:
     name: $PLAN
     paths:
       - $BUILD_PATH_BOOTSTRAP_AZURE_REMOTE_STATE
-      - ./.terraform
+      - .terraform
 
 
 apply-bootstrap-azure-remote-state:
@@ -90,7 +90,7 @@ validate-terraform-azure-kubernetes-service:
   artifacts:
     name: terraformdata2
     paths:
-      - ./.terraform
+      - .terraform
 
 plan-terraform-azure-kubernetes-service:
   stage: plan
@@ -101,9 +101,10 @@ plan-terraform-azure-kubernetes-service:
     - terraform init
     - terraform plan -var-file=$TF_VAR_FILE -var 'service_principal=$client_id' -var 'service_principal_secret=$client_secret' -input=false -out=$PLAN
   artifacts:
-    name: $PLAN
+    name: PLAN
     paths:
       - $BUILD_PATH_AZURE_KUBERNETES_SERVICE
+      - plan.tfplan
 
 apply-terraform-azure-kubernetes-service:
   stage: apply
