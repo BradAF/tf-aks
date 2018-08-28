@@ -127,7 +127,7 @@ terraform-docs:
     - validate-terraform-azure-kubernetes-service
   script:
     - cd $BUILD_PATH_AZURE_KUBERNETES_SERVICE
-    - terraform-docs markdown > terraform-info.md
+    - terraform-docs md . > terraform-info.md
     - git add terraform-info.md && git commit terraform-info.md -m "adding terraform-docs for $CI_COMMIT_REF_SLUG"
 
   when: manual
