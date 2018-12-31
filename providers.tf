@@ -1,5 +1,7 @@
-# Please do NOT set these credentials here.
 provider "azurerm" {
+      version = "=1.20.0"
+
+
 }
 
 /*
