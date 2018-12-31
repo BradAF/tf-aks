@@ -10,8 +10,14 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  imageName: 'your-container-image-name:$(build.buildId)'
+  imageName: 'hashicorp/terraform:light'
+  buildId: '$(build.buildId)'
+
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
+- script: pwd && ls -las
+  displayName: 'ls'
+
+- script: docker run $(imageName) terraform validate
   displayName: 'docker build'
+
