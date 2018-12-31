@@ -6,4 +6,5 @@
 .terraform
 .out
 tfplan
+plantf
 .plan

@@ -18,6 +18,8 @@ steps:
 - script: pwd && ls -las
   displayName: 'ls'
 
-- script: docker run $(imageName) "cd terraform-azure-kubernetes-service && terraform init && terraform validate" 
-  displayName: 'terraform validate'
+- script: docker run $(imageName) terraform init 
+  displayName: 'terraform init'
 
+- script: docker run $(imageName) terraform validate -var-file=test.tfvalues
+  displayName: 'terraform validate'
