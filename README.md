@@ -1,15 +1,9 @@
-# Terraform to provision Azure Kubernetes Services
-TF-AKS aims to provide a stable provisioning of the Azure Kubernetes through Terraform.
 
-The project has just started and is under heavy development.
+# Terraform for Azure Kubernetes Services
+TF-AKS is for provisioning Azure Kubernetes through Terraform.
 
-## Planned Features
-* Terraform Remote State on Azure File 
-* Provisioning of a Azure Kubernetes Cluster
-* A Persistent Storage Backend based on Azure File for Kubernetes Volumes.
-* Secret Management where necessary.
-* A static IP.
-* inspec testing to verify resource creation.
+[![Build Status](https://datadarius.visualstudio.com/tf-aks/_apis/build/status/datadarius.tf-aks?branchName=master)](https://datadarius.visualstudio.com/tf-aks/_build/latest?definitionId=2?branchName=master)
+
 
 ## Usage
 
